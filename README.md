@@ -31,3 +31,21 @@ step2 install :
 # BSON (binary & JSON)
 
 agar data yg dimasukan tidak hanya tipe teks saja
+
+- cara mencari element query pada suatu database. misal mau mencari data yg terdapat element "category"
+  db.products.find({
+  category: {
+  $exists: false
+  }
+  });
+- mencari dengan berdasarkan operator :
+  https://docs.mongodb.com/manual/reference/operator/query/expr/ (expr -> bikin uppercase, buat filter dll)
+  http://json-schema.org/ (jsonschema -> filter yg required)
+  (regex -> cek kalimat yg ada, ex: yg mengandung kata "mie")
+  (where -> mirip fungsi if)
+
+operator untuk megatur array :
+
+- $all: ["value"] = mengambil semua array yg mengandung kata tersebut
+- $elemMatch = mengambil data yg setidaknya ada salah satu
+- $size = mengeluarkan produk yg memiliki array sebanyak n
