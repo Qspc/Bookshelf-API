@@ -49,3 +49,19 @@ operator untuk megatur array :
 - $all: ["value"] = mengambil semua array yg mengandung kata tersebut
 - $elemMatch = mengambil data yg setidaknya ada salah satu
 - $size = mengeluarkan produk yg memiliki array sebanyak n
+
+## bulk write operation
+
+cara request data banyak langsung terhadap response
+
+## schema validation
+
+bikin ketentuan2 untuk poin2 yg ada di database
+
+## indexes
+
+melakukan pengurutan supaya gampang kalo dicari
+
+## security
+
+bikin fitur login.

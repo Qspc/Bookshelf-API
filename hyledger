@@ -1,0 +1,7 @@
+buat smart contract :
+Artifact > src > fabcar
+buat multiple smart contract dalam satu channel, artinya dalam satu channel kita bisa membuat dua fitur/fungsi yg menghasilkan dua smart contract yg berbeda (misal fitur input data dan fitur transaksi) :
+Artifact > src > document
+
+
+- setiap beres transaksi ngirim txtid

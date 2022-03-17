@@ -1,0 +1,22 @@
+NODE JS
+
+- URUTAN : Client (javascript/express) -> server (node js) -> database (mongo DB)
+- concurency (dikerjakan satu persatu), pararell (dikerjakan beberapa hal)
+
+- untuk run node js pakai : node <nama file>
+
+- dalam pembuatan async await, jika format file .mjs maka tidak perlu lagi melakukan penulisan async karena sudah auto
+- OS = standar library untuk mendapatkan informasi tentang sistem operasi laptop
+- Path = standar library yg bekerja dengan lokasi file
+- debugger = seperti breakpoint untuk mengecek fungsi error atau tidak. untuk menjalankannya menggunakan perintah : "node inspect <nama file>
+- dns = standar library untuk mengecek IP suatu browserq
+- event emitter = seperti fungsi biasa, ada objek === kata yg dituju maka bakal masuk ke fungsi itu
+- global = daftar function yg bisa digunakan tanpa harus menggunakan import
+- buffer = mengubah tiper data menjadi byte, utf8 dan tipe data lainnya
+- timer = fungsi untuk melakukan schedule, delay dll. semmua fungsi timer menggunakan callback
+- URL = library yg bekerja dengan URL
+- util = membuat menu penulisan (kaya pake backtik/ ` `)
+- zlib = library untuk melakukan kompress
+
+
+LOG OUT --> gak usah terlalu pusing
