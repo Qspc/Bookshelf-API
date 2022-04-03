@@ -1,24 +1,33 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 5050;
-const dbConfig = require('./config/DbConfig');
 const cors = require('cors');
-const req = require('express/lib/request');
-const app = express();
 const user = require('./model/User');
 const bcrypt = require('bcrypt');
-const response = require('./config/response');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'skjafnalsakdlamdlaldamdlamdafalasknksanvksandojaod';
+// require('./.env').config()
+
+const ACCESS_TOKEN_SECRET = 'de0df7d1c8d7989f1dbca78138d9fcc3bcd37509642258ff3c9c3e9d47aaeaff9eb878f37fe31571d1a228ea2a245fea7f49a4aaa8a3621b8e1749af1d8720da';
+const REFRESH_TOKEN_SECRET = 'c722719ea326a8d7b11a361e441d69048a35497968b475f216d1098f32125baaed45a0619df228a7cf4354d8a41e89e6aa30e55b2a9fc31cb796b036c002579d';
+
+const app = express();
 
 // sambungan ke database
+const db = require('./model/index');
+const { json } = require('express/lib/response');
 mongoose
-  .connect('mongodb://localhost:27017/coba', {
+  .connect(db.url, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
   .then(() => console.log('connect mongoDB'))
   .catch((err) => console.log(err));
+
+// pengecekan berjalan di port . . .
+const port = process.env.PORT || 5050;
+app.listen(port, function () {
+  console.log('server berjalan  di port ' + port);
+});
 
 app.use(cors());
 app.use(
@@ -43,21 +52,18 @@ app.post('/api/login', async (req, res) => {
   if (!data) {
     return res.json({ status: 'error', error: 'invalid username/password' });
   }
-
+  const id = {id: data._id,}
   if (await bcrypt.compare(password, data.password)) {
-    const token = jwt.sign(
-      {
-        id: data._id,
-        userName: data.userName,
-      },
-      JWT_SECRET
+    const accessToken = jwt.sign(
+      id,
+      ACCESS_TOKEN_SECRET
     );
 
-    return res.json({ status: 'selamat datang ' + data.userName, data: token });
+    return res.json({ status: 'selamat datang ' + data.userName, accessToken: accessToken });
   }
 
   try {
-    res.json({ status: 'oke', data: '' });
+    res.json({ status: 'oke', data: 'accessToken' });
   } catch (err) {
     console.log(err);
     return res.json({ status: 'error' });
@@ -86,11 +92,20 @@ app.post('/api/registrasi/', async (req, res) => {
   // if (!noTelp || typeof noTelp !== 'number') {
   //   return res.json({ status: 'error', error: 'invalid noTelp' });
   // }
-  if (!nik || typeof nik !== 'string') {
-    return res.json({ status: 'error', error: 'invalid nik' });
+   if (!tglLahir || typeof tglLahir !== 'string') {
+    return res.json({ status: 'error', error: 'invalid tglLahir' });
   }
-  if (!role || typeof role !== 'string') {
-    return res.json({ status: 'error', error: 'invalid role' });
+  // if (!nik || typeof nik !== 'number') {
+  //   return res.json({ status: 'error', error: 'invalid nik' });
+  // }
+  if (nik.length !== 16){
+    return res.json({ status: 'error', error: 'nik is not found' });
+  }
+  // if (!role || typeof role !== 'number') {
+  //   return res.json({ status: 'error', error: 'invalid role' });
+  // }
+  if (role > 4 || role < 1){
+    return res.json({ status: 'error', error: 'role is not found' });
   }
   if (!alamat || typeof alamat !== 'string') {
     return res.json({ status: 'error', error: 'invalid alamat' });
@@ -110,7 +125,38 @@ app.post('/api/registrasi/', async (req, res) => {
   res.json({ status: 'ok' });
 });
 
-// pengecekan berjalan di port . . .
-app.listen(port, function () {
-  console.log('server berjalan  di port ' + port);
+//penghubung ke routes
+const allRegister = require('./routes/register')
+app.use('/api', authenticateToken, allRegister)
+
+
+//get profile user login
+app.get('/api/profile/:userName', authenticateToken, async (req, res) => {
+  const {userName} = req.params
+
+  user.find({
+    userName
+  })
+
+  .then((result) => {
+    res.send(result)
+  })
+  .catch((err) => {
+    res.send(err)
+  })
 });
+
+//autentikasi token jwt
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
+  if (token === null) {
+    return  res.json({message: 'user not login'})
+  }
+
+  jwt.verify(token, ACCESS_TOKEN_SECRET, (err, id) => {
+    if (err) return  res.json({message: 'user not login'})
+    req.id = id 
+    next()
+  })
+}

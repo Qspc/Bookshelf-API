@@ -20,3 +20,36 @@ NODE JS
 
 
 LOG OUT --> gak usah terlalu pusing
+
+
+HYPERLEDGER
+-  berisi ledger (buku besar) & smart contract/chaincode (token transaksi)
+- 
+
+struktur :
+- organisasi = org2 yg terlibat
+- node peer = chaincode/smart contract
+- channel = tempat transaksi. contoh : antara C1 dan C2
+- ledger = buku besar
+- layanan pemesanan = titik administrasi/ penghubung antar channel
+- jaringan = tempat semua berjalan (aplikasinya)
+- certificate authority = pengaturan yg mencakup kebijakan (berjalan diluar apps)
+- network configutation = admin
+
+# certificate authority (CA)
+adalah pihak yg megeluarkan sertifikat untuk melakukan perizinan dan menandatangani semua transaksi kedalam bukubesar. simpelnya ada dua hal dalam CA :
+1. identifikasi satu sama lain dengan organisasi tertentu. pemetaan sertifikasi menggunakan penyedia MSP
+2. proses pembuatan transaksi dan validasi
+admin bisa menggunakan administrator jaringan untuk menambahkan admin lain
+admin membuat "konsorium" supaya semua user bisa ikut membantu
+
+# channel
+tempat semua konsorium bertransaksi, semua bersifat privat. berisikan :
+- user, org2 yg terlibat
+- konfigurasi channel, hanya dapat dikelola oleh user
+
+
+
+
+rumusan masalah = satu aja/digabungin
+unique berhasil

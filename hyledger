@@ -5,3 +5,21 @@ Artifact > src > document
 
 
 - setiap beres transaksi ngirim txtid
+
+
+role < 5
+email harus bentuk email
+NIk < berapa
+
+
+
+dicatat cuma sampai pedagang -> konsumen cuma scan barcode
+aktor
+yg dipake cuma deploybawang sisanya bawaan tutorial
+hyperledger nya di file Artifact
+artifaCt > src > github > bawangmerah = chaincode, tempat bikin model (atribut setiap fitur). selain itu juga untuk buat fungsi/fitur yg digunakan pada setiap transaksi
+untuk createdAT menggunakan unix timestamp
+getTxiD => fungsi dari hyperledger bisa di searching disitu
+fungsi2 tadi (yg dibuat di bawangmerah) bakal dipanggil lagi di api > app > invoke
+certificate authority => artifaCt > channel > create > docker
+hyperledger selain nyimpen didalam blok tapi juga nyimpen di couchDB buat ngequery berdasarkan transaction ID. disimpen di : artifaCt > channel > docker

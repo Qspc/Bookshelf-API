@@ -1,1 +1,3 @@
-exports.mongoURL = 'mongodb://172.0.0.1:27017/belajar';
+module.exports = {
+    url: "mongodb://localhost:27017/coba"
+}
