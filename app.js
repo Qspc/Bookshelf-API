@@ -11,6 +11,7 @@ const ACCESS_TOKEN_SECRET = 'de0df7d1c8d7989f1dbca78138d9fcc3bcd37509642258ff3c9
 const REFRESH_TOKEN_SECRET = 'c722719ea326a8d7b11a361e441d69048a35497968b475f216d1098f32125baaed45a0619df228a7cf4354d8a41e89e6aa30e55b2a9fc31cb796b036c002579d';
 
 const app = express();
+let refreshTokens = []
 
 // sambungan ke database
 const db = require('./model/index');
@@ -54,21 +55,34 @@ app.post('/api/login', async (req, res) => {
   }
   const id = {id: data._id,}
   if (await bcrypt.compare(password, data.password)) {
-    const accessToken = jwt.sign(
-      id,
-      ACCESS_TOKEN_SECRET
-    );
+    const accessToken = generateAccessToken(id)
+    const refreshToken = jwt.sign(id, REFRESH_TOKEN_SECRET)
+    // refreshToken.push(refreshTokens)
 
-    return res.json({ status: 'selamat datang ' + data.userName, accessToken: accessToken });
+    return res.json({ status: 'selamat datang ' + data.userName, accessToken: accessToken, refreshToken : refreshToken });
   }
 
-  try {
-    res.json({ status: 'oke', data: 'accessToken' });
-  } catch (err) {
-    console.log(err);
-    return res.json({ status: 'error' });
-  }
+  const refreshToken = accessToken
+
 });
+
+//request token
+app.post('/api/token', async (req, res) => {
+  const refreshToken = req.body.token
+  if (refreshToken === null) return res.json({ status: 'user belum login'})
+  if (!refreshTokens.includes(refreshToken)) return res.json({ status: 'akses ditolak'})
+  jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, id) => {
+    if (err) return res.sendStatus(403)
+    const accessToken = generateAccessToken(id)
+    res.json({ accessToken: accessToken})
+  })
+})
+
+//logout
+app.delete('/api/logout/', async (req, res) => {
+  refreshTokens = await refreshTokens.filter(token => token !== req.body.token)
+  res.json({ status: "selamat jalan"})
+})
 
 // register
 app.post('/api/registrasi/', async (req, res) => {
@@ -89,21 +103,21 @@ app.post('/api/registrasi/', async (req, res) => {
   if (!namaLengkap || typeof namaLengkap !== 'string') {
     return res.json({ status: 'error', error: 'invalid namaLengkap' });
   }
-  // if (!noTelp || typeof noTelp !== 'number') {
-  //   return res.json({ status: 'error', error: 'invalid noTelp' });
-  // }
+  if (!noTelp || typeof noTelp !== 'string') {
+    return res.json({ status: 'error', error: 'invalid noTelp' });
+  }
    if (!tglLahir || typeof tglLahir !== 'string') {
     return res.json({ status: 'error', error: 'invalid tglLahir' });
   }
-  // if (!nik || typeof nik !== 'number') {
-  //   return res.json({ status: 'error', error: 'invalid nik' });
-  // }
+  if (!nik || typeof nik !== 'string') {
+    return res.json({ status: 'error', error: 'invalid nik' });
+  }
   if (nik.length !== 16){
     return res.json({ status: 'error', error: 'nik is not found' });
   }
-  // if (!role || typeof role !== 'number') {
-  //   return res.json({ status: 'error', error: 'invalid role' });
-  // }
+  if (!role || typeof role !== 'string') {
+    return res.json({ status: 'error', error: 'invalid role' });
+  }
   if (role > 4 || role < 1){
     return res.json({ status: 'error', error: 'role is not found' });
   }
@@ -159,4 +173,8 @@ function authenticateToken(req, res, next) {
     req.id = id 
     next()
   })
+}
+
+function generateAccessToken(id) {
+  return jwt.sign(id, ACCESS_TOKEN_SECRET, {expiresIn: '300s'})
 }
