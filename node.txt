@@ -52,4 +52,5 @@ tempat semua konsorium bertransaksi, semua bersifat privat. berisikan :
 
 
 rumusan masalah = satu aja/digabungin
-unique berhasil
+
+mongodb+srv://shibgoqqq:shibgomongo@nodejs.o7aia.mongodb.net/mangojs?retryWrites=true&w=majority
