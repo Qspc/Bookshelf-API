@@ -24,7 +24,18 @@ LOG OUT --> gak usah terlalu pusing
 
 HYPERLEDGER
 -  berisi ledger (buku besar) & smart contract/chaincode (token transaksi)
-- 
+
+
+R1, R2 = organisasi setempat
+C1, C2 = channel
+L1, L2 = Ledger
+S5, S4 = Smart contract
+P1, P2 = Peers
+A1, A2 = aplikasi yang menjalankan
+04 = node pemesanan
+X1, X2 = konsorium
+NC4 = admin
+CC1, CC2 = channel konfigurasi
 
 struktur :
 - organisasi = org2 yg terlibat
@@ -40,17 +51,50 @@ struktur :
 adalah pihak yg megeluarkan sertifikat untuk melakukan perizinan dan menandatangani semua transaksi kedalam bukubesar. simpelnya ada dua hal dalam CA :
 1. identifikasi satu sama lain dengan organisasi tertentu. pemetaan sertifikasi menggunakan penyedia MSP
 2. proses pembuatan transaksi dan validasi
-admin bisa menggunakan administrator jaringan untuk menambahkan admin lain
+admin bisa menggunakan administrator jaringan untuk menambahkan admin lain --> hanya di hyperledger
 admin membuat "konsorium" supaya semua user bisa ikut membantu
+
+# admin
+- pada hyperledger bisa nambah admin
+- mod_poicy = wewenang presiden
 
 # channel
 tempat semua konsorium bertransaksi, semua bersifat privat. berisikan :
 - user, org2 yg terlibat
 - konfigurasi channel, hanya dapat dikelola oleh user
+- Peers, yang berisikan smart contract dan ledger (buku besar)
+- organisasi yang terlibat (R1, R2)
+
+# Peers dan Ledger (buku besar)
+- fungsi peers adalah sebagai host dari ledger itu sendiri
+- tidak semua Peers menginstall smart contract didalamnya
+- tipe2 peers :
+1. commiting peer = peer yang berkomimet dimana menerima blok transaksi yg dihasilkan dan di validasi (accept & reject)
+2. endorsing peer = semua peer yg terdapat smart contract merupakan endorsing peer. tapi peer nya harus digunakan aplikasi yg menghasilkan respon transaksi (maybe qr code)
+- role2 peers :
+1. leader peer = peer yg menjadi pemimpin, yg bertanggung jawab untuk distribusi dari satu ke yg lainnya. jika leader statis maka semua dapat menjadi leader namun jika leader dinamis maka leader hanya satu
+2. anchor peer = berfungsi untuk komunikasi satu dengan organisasi lain
+- commit peer, endorsing peer, dan leader peer wajib. anchor sunah
+
+# smart contract
+- diinstall pada peer
+- dapat digunakan oleh organisasi
+- jadi alurnya, apabila user dari luar ingin mengakses Ledger maka harus lewat : User -> masuk ke peers -> smart contract (harus diberi izin dulu oleh organisasi) -> ledger
+- jadi fungsi smart contract yaitu dapat membantu distribusi antar network. konfigurasi yg harus dilakukan :
+1. instalasi peers
+2. mendefinisikan channel
+- SMART CONTRACT yaitu buat pengaturan dari transaksi itu sendiri, sedangkan CHAINCODE yaitu proses pengemasan dari smart contract itu sendiri
+
+# New channel
+- channel baru dapat dibuat dengan membuat konsorium baru yg mengelolanya (terpisah dengan admin)
+- konsorium ini hanya yg dapat membuat konfigurasi pada channel ini. admin gak bisa
+
+- admin berada diatas node pemesanan posisinya meskipun aktor node pemesanan adalah org yg membuat semua channel dan peer dan konsorium
+
+# node pemesanan
+- merupakan komponen untuk mengumpulkan transaksi di aplikasi dan memesannya kedalam blok transaksi lalu didistribusikan kedalam setiap node rekan di saluran
+- saat di channel node pemesanan berfungsi untuk mengumpulkan transaction dan mendistribusikan blok didalam channel tersebut
+- saat berada di network node pemesanan berfugnsi untuk menyediakan titik manajemen sumber daya sesuai dengan kebijakan yang dibuat admin
 
 
-
-
-rumusan masalah = satu aja/digabungin
-
-mongodb+srv://shibgoqqq:shibgomongo@nodejs.o7aia.mongodb.net/mangojs?retryWrites=true&w=majority
+mongodb+srv://mango-bm:mangobm123@nodejs.4vfoe.mongodb.net/mangobm?retryWrites=true&w=majority

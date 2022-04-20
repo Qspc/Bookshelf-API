@@ -1,7 +1,7 @@
 const dbConfig = require('../config/DbConfig')
 
 const db = {}
-db.url = dbConfig.url
+db.url = dbConfig.database
 
 db.posts = require('../model/User')
 

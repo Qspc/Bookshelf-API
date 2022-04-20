@@ -5,10 +5,8 @@ const cors = require('cors');
 const user = require('./model/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// require('./.env').config()
+require('dotenv').config();
 
-const ACCESS_TOKEN_SECRET = 'de0df7d1c8d7989f1dbca78138d9fcc3bcd37509642258ff3c9c3e9d47aaeaff9eb878f37fe31571d1a228ea2a245fea7f49a4aaa8a3621b8e1749af1d8720da';
-const REFRESH_TOKEN_SECRET = 'c722719ea326a8d7b11a361e441d69048a35497968b475f216d1098f32125baaed45a0619df228a7cf4354d8a41e89e6aa30e55b2a9fc31cb796b036c002579d';
 
 const app = express();
 let refreshTokens = []
@@ -16,16 +14,10 @@ let refreshTokens = []
 // sambungan ke database
 const db = require('./model/index');
 const { json } = require('express/lib/response');
-mongoose
-  .connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('connect mongoDB'))
-  .catch((err) => console.log(err));
+// const database = process.env.MONGO_URI || "mongodb://localhost:27017/mangojs"
+const port = process.env.PORT || 5050;
 
 // pengecekan berjalan di port . . .
-const port = process.env.PORT || 5050;
 app.listen(port, function () {
   console.log('server berjalan  di port ' + port);
 });
@@ -56,7 +48,7 @@ app.post('/api/login', async (req, res) => {
   const id = {id: data._id,}
   if (await bcrypt.compare(password, data.password)) {
     const accessToken = generateAccessToken(id)
-    const refreshToken = jwt.sign(id, REFRESH_TOKEN_SECRET)
+    const refreshToken = jwt.sign(id, process.env.REFRESH_TOKEN_SECRET)
     // refreshToken.push(refreshTokens)
 
     return res.json({ status: 'selamat datang ' + data.userName, accessToken: accessToken, refreshToken : refreshToken });
@@ -71,7 +63,7 @@ app.post('/api/token', async (req, res) => {
   const refreshToken = req.body.token
   if (refreshToken === null) return res.json({ status: 'user belum login'})
   if (!refreshTokens.includes(refreshToken)) return res.json({ status: 'akses ditolak'})
-  jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, id) => {
+  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, id) => {
     if (err) return res.sendStatus(403)
     const accessToken = generateAccessToken(id)
     res.json({ accessToken: accessToken})
@@ -168,7 +160,7 @@ function authenticateToken(req, res, next) {
     return  res.json({message: 'user not login'})
   }
 
-  jwt.verify(token, ACCESS_TOKEN_SECRET, (err, id) => {
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, id) => {
     if (err) return  res.json({message: 'user not login'})
     req.id = id 
     next()
@@ -176,5 +168,5 @@ function authenticateToken(req, res, next) {
 }
 
 function generateAccessToken(id) {
-  return jwt.sign(id, ACCESS_TOKEN_SECRET, {expiresIn: '300s'})
+  return jwt.sign(id, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '300s'})
 }

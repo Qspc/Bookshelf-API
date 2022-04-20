@@ -7,7 +7,7 @@ Artifact > src > document
 - setiap beres transaksi ngirim txtid
 
 
-role < 5
+role < 5 
 email harus bentuk email
 NIk < berapa
 
@@ -23,3 +23,19 @@ getTxiD => fungsi dari hyperledger bisa di searching disitu
 fungsi2 tadi (yg dibuat di bawangmerah) bakal dipanggil lagi di api > app > invoke
 certificate authority => artifaCt > channel > create > docker
 hyperledger selain nyimpen didalam blok tapi juga nyimpen di couchDB buat ngequery berdasarkan transaction ID. disimpen di : artifaCt > channel > docker
+
+
+rumusan masalah = satu aja/digabungin
+
+mongodb+srv://shibgoqqq:shibgomongo@nodejs.o7aia.mongodb.net/mangojs?retryWrites=true&w=majority
+siapa yg bikin qr code
+
+
+
+
+
+3 channel
+1 channel dua organisasi
+1 organisasi 1 client dua peer
+
+
