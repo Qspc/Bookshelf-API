@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 require('dotenv').config();
-const database = process.env.MONGO_URI || "mongodb://localhost:27017/mangobm"
+const database = process.env.MONGO_URI || "mongodb://localhost:27017/"
 
 mongoose
   .connect(database, {

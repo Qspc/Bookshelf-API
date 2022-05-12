@@ -10,6 +10,7 @@ router.get("/:_id", getOne);
 // edit data profile
 router.put("/:_id", editUser);
 
+// get profile
 router.get("/:userName", getProfile);
 
 

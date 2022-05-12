@@ -43,7 +43,7 @@ app.post('/api/login', async (req, res) => {
   // res.json(data);
 
   if (!data) {
-    return res.json({ status: 'error', error: 'invalid username/password' });
+    return res.status(404).json({ status: 'error', error: 'invalid username/password' });
   }
   const id = {id: data._id,}
   if (await bcrypt.compare(password, data.password)) {
@@ -73,7 +73,7 @@ app.post('/api/token', async (req, res) => {
 //logout
 app.delete('/api/logout/', async (req, res) => {
   refreshTokens = await refreshTokens.filter(token => token !== req.body.token)
-  res.json({ status: "selamat jalan"})
+  res.json({ status: "error", error: req.body.taken})
 })
 
 // register
@@ -125,7 +125,7 @@ app.post('/api/registrasi/', async (req, res) => {
     console.log('User success !!', response);
   } catch (err) {
     console.log(err);
-    return res.json({ status: 'error' });
+    return res.status(400).json({ status: 'error' });
   }
 
   res.json({ status: 'ok' });
@@ -161,7 +161,7 @@ function authenticateToken(req, res, next) {
   }
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, id) => {
-    if (err) return  res.json({message: 'user not login'})
+    if (err) return  res.json({message: 'token not valid'})
     req.id = id 
     next()
   })

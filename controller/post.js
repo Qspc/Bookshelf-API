@@ -30,7 +30,7 @@ const editUser = async (req, res) => {
         message: "post not found"
       })
     }
-    res.send({
+    res.send(result, {
       message: 'post was update'
     })
   })
