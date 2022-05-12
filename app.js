@@ -81,40 +81,40 @@ app.post('/api/registrasi/', async (req, res) => {
   const { userName, password: plainTextPassword, email, namaLengkap, noTelp, tglLahir, nik, role, alamat } = req.body;
 
   if (!userName || typeof userName !== 'string') {
-    return res.json({ status: 'error', error: 'invalid username' });
+    return res.status(400).json({ status: 'error', error: 'invalid username' });
   }
   if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-    return res.json({ status: 'error', error: 'invalid password' });
+    return res.status(400).json({ status: 'error', error: 'invalid password' });
   }
   if (plainTextPassword.length < 5) {
-    return res.json({ status: 'error', error: 'password must more than five character' });
+    return res.status(400).json({ status: 'error', error: 'password must more than five character' });
   }
   if (!email || typeof email !== 'string') {
-    return res.json({ status: 'error', error: 'invalid email' });
+    return res.status(400).json({ status: 'error', error: 'invalid email' });
   }
   if (!namaLengkap || typeof namaLengkap !== 'string') {
-    return res.json({ status: 'error', error: 'invalid namaLengkap' });
+    return res.status(400).json({ status: 'error', error: 'invalid namaLengkap' });
   }
   if (!noTelp || typeof noTelp !== 'string') {
-    return res.json({ status: 'error', error: 'invalid noTelp' });
+    return res.status(400).json({ status: 'error', error: 'invalid noTelp' });
   }
    if (!tglLahir || typeof tglLahir !== 'string') {
-    return res.json({ status: 'error', error: 'invalid tglLahir' });
+    return res.status(400).json({ status: 'error', error: 'invalid tglLahir' });
   }
   if (!nik || typeof nik !== 'string') {
-    return res.json({ status: 'error', error: 'invalid nik' });
+    return res.status(400).json({ status: 'error', error: 'invalid nik' });
   }
   if (nik.length !== 16){
-    return res.json({ status: 'error', error: 'nik is not found' });
+    return res.status(400).json({ status: 'error', error: 'nik is not found' });
   }
   if (!role || typeof role !== 'string') {
-    return res.json({ status: 'error', error: 'invalid role' });
+    return res.status(400).json({ status: 'error', error: 'invalid role' });
   }
   if (role > 4 || role < 1){
-    return res.json({ status: 'error', error: 'role is not found' });
+    return res.status(400).json({ status: 'error', error: 'role is not found' });
   }
   if (!alamat || typeof alamat !== 'string') {
-    return res.json({ status: 'error', error: 'invalid alamat' });
+    return res.status(400).json({ status: 'error', error: 'invalid alamat' });
   }
 
   // enkripsi password
