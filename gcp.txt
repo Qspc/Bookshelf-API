@@ -1,0 +1,7 @@
+step pertama :
+1. buat VM instance
+2. buat firewall
+3. keygen public key di ssh
+
+pake viscode untuk gcp :
+1. install ekstensi remote ssh

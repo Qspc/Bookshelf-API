@@ -6,11 +6,13 @@ Artifact > src > document
 
 - setiap beres transaksi ngirim txtid
 
-
-role < 5 
-email harus bentuk email
-NIk < berapa
-
+yg harus dinyalain :
+1. buat API : cd ke file mongo/api 2.0 > nvm use 12 > pm2 start app.js
+2. buat hyperledger :
+    - cd artifact/ca-operation
+    - docker-compose up -d
+    - ganti folder cd artifact
+    - docker-compose up -d
 
 
 dicatat cuma sampai pedagang -> konsumen cuma scan barcode
@@ -25,15 +27,48 @@ certificate authority => artifaCt > channel > create > docker
 hyperledger selain nyimpen didalam blok tapi juga nyimpen di couchDB buat ngequery berdasarkan transaction ID. disimpen di : artifaCt > channel > docker
 
 
-rumusan masalah = satu aja/digabungin
-
-mongodb+srv://shibgoqqq:shibgomongo@nodejs.o7aia.mongodb.net/mangojs?retryWrites=true&w=majority
-siapa yg bikin qr code
 
 
 
+DAFTAR LINK API YANG BAKAL DIPAKAI (FIX) :
+- Bagian Authorization
+1. register :
+    - fungsi : POST
+    - halaman user daftar akun
+    - input : userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat
+    - output : status ok (accept), status error (failed)
+    - link :
 
 
+2. login :
+    - fungsi : POST
+    - halaman user login masuk ke aplikasi
+    - input : userName, password
+    - output : selamat datang {user} (accept), acces_token, refresh_token
+    - link :
 
+3. get all data :
+    - fungsi : GET
+    - melakukan get semua data user
+    - input : -
+    - output : all data setiap user
+    - link :
 
+4. profile
+    - fungsi : GET
+    - melakukan get data dari akun yang melakukan login
+    - input : -
+    - output : userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat
+    - link :
+
+5. proses invoke
+    - fungsi : POST
+    - proses mengirimkan data pada blockchain
+    - input : fungsi invoke, peers (alamat tujuan), chaincodeName, channelName, argumen (semua inputan yang akan dikirim)
+    - output : Id transaksi
+
+6. proses query
+    - fungsi : GET
+    - proses menjalankan fungsi query
+    - input : peers, fungsi invoke (fcn), argumen (json)
 

@@ -65,7 +65,8 @@ type Bawang struct {
 	TxID1 string `json:"txID1"` // penangkar - petani
 	TxID2 string `json:"txID2"` // petani - pengumpul
 	TxID3 string `json:"txID3"` // pengumpul - pedagang
-	TxID4 string `json:"txID3"` // pedagang - konsumen
+	TxID4 string `json:"txID4"` // pedagang - konsumen
+	TxID5 string `json:"txID5"` // pedagang - konsumen
 
 	IsAsset 	bool `json:"isAsset"`
 	IsConfirmed bool `json:"isConfirmed"`

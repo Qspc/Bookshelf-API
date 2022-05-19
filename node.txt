@@ -97,10 +97,3 @@ tempat semua konsorium bertransaksi, semua bersifat privat. berisikan :
 - saat berada di network node pemesanan berfugnsi untuk menyediakan titik manajemen sumber daya sesuai dengan kebijakan yang dibuat admin
 
 
-
-
-- unique kasih pesan error
-- edit masih error
-- logout juga?
-- token access masih bisa dipake lagi
-- login masuk2 aja 
