@@ -1,0 +1,75 @@
+GOLANG NOTES
+
+cara run golang :
+- go build <nama_file>
+- ./nama_file
+atau :
+- go run <nama_file>
+
+tipe data di golang :
+- integer (int8, int16, int32, int64) dan unsigninteger (uint8, uint16, uint32, uint64)
+- floating point (float32, float64)
+- byte ===> uint8
+- rune ===> int32
+- int ===> int32
+- uint ===> 64
+- bool ===> true & false
+- string
+*contoh :
+- fmt.Println(len("eko"))
+- fmt.Println("eko"[1])
+
+Variabel :
+var name string
+name = "eko"
+fmt.Println(name)
+*bisa diringkas
+name := "eko"
+fmt.Println(name)
+
+Constant :
+sama seperti variabel, namun datanya tidak bisa diubah
+
+Type :
+tipe data sebagai pengganti tipe data yg ada. contoh :
+type status bool
+var noStatus status = true
+
+Array :
+var nama [3]string
+nama[0] = "eko"
+nama[1] = "patrio"
+fmt.Println(nama[0])
+
+Tipe data Slice :
+tipe data buat motong data di Array
+var angka = [...]int16{1,2,3,4,5,6,7,8,9,10}
+var slice = angka[3:5] --> isinya [4,5]
+
+MAP :
+tipe data berisi key : value
+person := map[string]string{
+    "name" : "eko",
+    "Address" : "bgor"
+}
+
+Function :
+- return value
+func getHallo(name string) string {
+    return "Hello " + name
+}
+func main() {
+    result := getHallo("eko")
+    fmt.Println.(result)
+}
+- multiple value
+func getFullName() (string, string) {
+    return "eko", "kurni"
+}
+func main() {
+    result firstName, lastName := getFullName()
+    fmt.Println(firstName, lastName)
+}
+
+
+JSON

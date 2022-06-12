@@ -4,7 +4,7 @@ buat multiple smart contract dalam satu channel, artinya dalam satu channel kita
 Artifact > src > document
 
 
-- setiap beres transaksi ngirim txtid
+
 
 yg harus dinyalain :
 1. buat API : cd ke file mongo/api 2.0 > nvm use 12 > pm2 start app.js
@@ -26,9 +26,27 @@ fungsi2 tadi (yg dibuat di bawangmerah) bakal dipanggil lagi di api > app > invo
 certificate authority => artifaCt > channel > create > docker
 hyperledger selain nyimpen didalam blok tapi juga nyimpen di couchDB buat ngequery berdasarkan transaction ID. disimpen di : artifaCt > channel > docker
 
+<!-------------------------------------------------------------------------------------------------------------->
+FUNGSI PADA APLIKASI MANGO JS
+1. DAFTAR ASSET BENIH (PENANGKAR) *
+2. UPDATE ASSET BENIH (PENANGKAR) *
+3. CREATE TRANSAKSI (PENANGKAR -> PETANI) *
+4. DETAIL TANAM BENIH (PETANI) *
+5. DETAIL PANEN HASIL (PETANI)
+6. CREATE TRANSAKSI (PETANI -> PENANGKAR) *
+7. CREATE TRANSAKSI KECIL (PENANGKAR -> PEDAGANG KECIL) 
+8. CREATE TRANSAKSI BESAR (PENANGKAR -> PEDAGANG BESAR) *
+9. DETAIL TRANSAKSI (PEDAGANG - - -> PEMBELI) 
 
-
-
+- ADD BAWANG ASSET
+- GET USER BY ADDRESS
+- ISCONFIRM === TRUE
+- ISREJECTED === TRUE AND RETRIEVE ASSET 
+- GET BAWANGID
+- POST/CREATE USER IN BLOCKCHAIN
+- GET USER & BAWANG BY ID
+- GET BAWANG FOR QUERY
+- 3 FUNC ?
 
 DAFTAR LINK API YANG BAKAL DIPAKAI (FIX) :
 - Bagian Authorization
@@ -66,6 +84,16 @@ DAFTAR LINK API YANG BAKAL DIPAKAI (FIX) :
     - proses mengirimkan data pada blockchain
     - input : fungsi invoke, peers (alamat tujuan), chaincodeName, channelName, argumen (semua inputan yang akan dikirim)
     - output : Id transaksi
+    - list fungsi yg dibikin :
+    1. CreateBenih = menambahkan informasi tentang benih (penangkar)
+    2. addBenihKuantitasbyID = update/menambah kuantitas dari benih (penangkar)
+    3. CreateTrxBawangByPenangkar = transaksi antara penangkar dan petani (penangkar)
+    4. PlantBenih = proses mananam benih (petani)
+    5. harvestBawang = proses panen dari bawang (petani)
+    6. UpdateBawangTrxByPetani = transaksi petani dan pengumpul (petani)
+    7. UpdateBawangTrxByPengumpul = transaksi pengumpul dan pedagang (pengumpul)
+    8. ConfirmTrxByID = konfirmasi transaksi diterima
+    9. RejectTrxByID = konfirmasi transaksi ditolak 
 
 6. proses query
     - fungsi : GET

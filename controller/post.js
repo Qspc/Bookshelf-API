@@ -50,7 +50,8 @@ const getProfile = async (req, res) => {
     res.send(result)
   })
   .catch((err) => {
-    res.send(err)
+    console.log(err)
+    return res.status(400).json({ status: 'error' });
   })
 };
 

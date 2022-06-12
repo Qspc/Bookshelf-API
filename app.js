@@ -152,16 +152,17 @@ app.get('/api/profile/:userName', authenticateToken, async (req, res) => {
   })
 });
 
+
 //autentikasi token jwt
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
   if (token === null) {
-    return  res.json({message: 'user not login'})
+    return  res.status(401).json({message: 'user not login'})
   }
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, id) => {
-    if (err) return  res.json({message: 'token not valid'})
+    if (err) return  res.status(401).json({message: 'token not valid'})
     req.id = id 
     next()
   })
