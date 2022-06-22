@@ -3,7 +3,9 @@ Artifact > src > fabcar
 buat multiple smart contract dalam satu channel, artinya dalam satu channel kita bisa membuat dua fitur/fungsi yg menghasilkan dua smart contract yg berbeda (misal fitur input data dan fitur transaksi) :
 Artifact > src > document
 
-
+< ---------------------------------- >
+NOTES NONTON VIDEO
+- setiap Function (step2) ada ID buat nyimpen datanya / jadi qr code ?
 
 
 yg harus dinyalain :
@@ -25,6 +27,16 @@ getTxiD => fungsi dari hyperledger bisa di searching disitu
 fungsi2 tadi (yg dibuat di bawangmerah) bakal dipanggil lagi di api > app > invoke
 certificate authority => artifaCt > channel > create > docker
 hyperledger selain nyimpen didalam blok tapi juga nyimpen di couchDB buat ngequery berdasarkan transaction ID. disimpen di : artifaCt > channel > docker
+
+< ---------------------------------- >
+FUNGSI-FUNGSI PADA HYPERLEDGER :
+- GetTxID() = fungsi untuk bikin ID 
+- SetEvent() = memberi pesan tambahan pada data yang akan dikirim
+- PutState() = menimpa data yang sudah dibuat
+- GetState() = mengambil data dengan key sebuah ID
+
+
+
 
 <!-------------------------------------------------------------------------------------------------------------->
 FUNGSI PADA APLIKASI MANGO JS

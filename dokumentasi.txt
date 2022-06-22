@@ -1,0 +1,76 @@
+Manggo JS
+
+- Pengertian 
+aplikasi rantai pasok buah mangga yang menggunakan teknologi blockchain
+
+
+- atribut 
+1. autentikasi
+Id, userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat  
+
+2. blockchain
+
+
+- channel
+1. channel pertama : channel1
+alur proses = penangkar -> petani -> pengumpul -> pedagang besar -> konsumen
+2. channel kedua : channel2
+alur proses : penangkar -> petani -> pengumpul -> pedagang kecil -> konsumen
+
+- function pada blockchain
+1. RegistrasiBenih
+aktor : penangkar
+proses mendaftarkan/registrasi benih
+2. AddKuantitasBenihByID
+aktor : penangkar
+proses menambah/update data dari benih tersebut
+3. CreateTrxManggaByPenangkar
+aktor : penangkar
+proses transaksi dari penangkar ke petani
+4. TanamBenih
+aktor : petani
+proses penanaman benih untuk memulai proses pertanian
+5. PanenMangga
+aktor : petani
+proses panen buah mangga
+6. AddManggaKuantitasByID
+aktor : petani
+proses menambah/update data dari bawang
+7. CreateTrxManggaByPetani
+aktor : petani
+proses transaksi dari petani ke pengumpul
+8. CreateTrxManggaByPengumpul
+aktor : pengumpul
+proses transaksi dari pengumpul ke pedagang besar/kecil
+9. CreateTrxManggaByPedagang
+aktor : pedagang
+proses transaksi dari pedagang ke konsumen
+10. ConfirmTrxByID
+aktor : petani, pengumpul, pedagang
+menerima transaksi dari aktor sebelumnya
+11. RejectTrxByID
+aktor : petani, pengumpul, pedagang
+menolak transaksi dari aktor sebelumnya
+
+
+
+LINK API :
+1. Register
+link : http://localhost:3000/api/register
+method : POST
+input : userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat
+output : {message : success}
+
+2. login
+link : http://localhost:3000/api/login
+method : POST
+input : userName, password
+output : message, acces_token, refresh_token
+
+3. profile
+link : http://localhost:3000/api/profile/${userName}
+method : GET
+input : userName, acces_token
+output : all data in register
+
+4. 
