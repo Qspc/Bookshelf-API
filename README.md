@@ -28,7 +28,7 @@ Mangga|ID, BenihID, ManggaID, NamaPengirim, NamaPenerima, KuantitasBenihKg, Harg
 **Aktor**|**Aktivitas (fcn)**|**Atribut (input From FE)**|**Keterangan**
 :-----:|:-----:|:-----:|:-----:
 Penangkar|RegistrasiBenih|VarietasBenih, UmurBenih, KuantitasBenihKg|-
-Penangkar|AddKuantitasBenihByID|quantity|-
+Penangkar|AddKuantitasBenihByID|quantity|quantity = banyaknya benih yg ditambah
 Penangkar|CreateTrxManggaByPenangkar|NamaPengirim, NamaPenerima, HargaBenihKg, CaraPembayaran|-
 Petani|TanamBenih|Pupuk, TanggalTanam, LokasiLahan|-
 Petani|PanenMangga|Ukuran, Pestisida, KadarAir, Perlakuan, Produktivitas, TanggalPanen, KuantitasManggaKg|-
@@ -36,7 +36,7 @@ Petani|CreateTrxManggaByPetani|NamaPengirim, NamaPenerima, HargaManggaTotal, Car
 Pengumpul|CreateTrxManggaByPengumpul|NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TanggalMasuk, TanggalTransaksi, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran|-
 Pedagang|CreateTrxManggaByPedagang|NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran|-
 
-## dokumentasi Chaincode Pada Channel 1 (Penangkar - Petani - Pengumpul - Pedagang Kecil - Konsumen)
+## dokumentasi Chaincode Pada Channel 2 (Penangkar - Petani - Pengumpul - Pedagang Kecil - Konsumen)
 
 - Nama Channel : channel2
 - Nama Chaincode/Smart Contract : manggadua_cc
@@ -45,7 +45,7 @@ Pedagang|CreateTrxManggaByPedagang|NamaPengirim, NamaPenerima, HargaManggaKg, Ku
 **Aktor**|**Aktivitas (fcn)**|**Atribut (input From FE)**|**Keterangan**
 :-----:|:-----:|:-----:|:-----:
 Penangkar|RegistrasiBenih|VarietasBenih, UmurBenih, KuantitasBenihKg|-
-Penangkar|AddKuantitasBenihByID|quantity|-
+Penangkar|AddKuantitasBenihByID|quantity|quantity = banyaknya benih yg ditambah
 Penangkar|CreateTrxManggaByPenangkar|NamaPengirim, NamaPenerima, HargaBenihKg, CaraPembayaran|-
 Petani|TanamBenih|Pupuk, TanggalTanam, LokasiLahan|-
 Petani|PanenMangga|Ukuran, Pestisida, KadarAir, Perlakuan, Produktivitas, TanggalPanen, KuantitasManggaKg|-
