@@ -51,4 +51,7 @@ Petani|TanamBenih|Pupuk, TanggalTanam, LokasiLahan|-
 Petani|PanenMangga|Ukuran, Pestisida, KadarAir, Perlakuan, Produktivitas, TanggalPanen, KuantitasManggaKg|-
 Petani|CreateTrxManggaByPetani|NamaPengirim, NamaPenerima, HargaManggaTotal, CaraPembayaran|-
 Pengumpul|CreateTrxManggaByPengumpul|NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TanggalMasuk, TanggalTransaksi, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran|-
-Pedagang|CreateTrxManggaByPedagang|NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran|-
+Pedagang|CreateTrxManggaByPedagang|NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, CaraPembayaran|-
+Petani, Pengumpul, Pedagang|ConfirmTrxByID|-|-
+Petani, Pengumpul, Pedagang|RejectTrxByID|RejectReason|-
+

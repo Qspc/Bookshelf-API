@@ -57,7 +57,7 @@ presetup() {
 }
 # presetup
 
-CHANNEL_NAME="channel1"
+CHANNEL_NAME="channel2"
 CC_RUNTIME_LANGUAGE="golang"
 VERSION="3.22"
 SEQUENCE="43"
