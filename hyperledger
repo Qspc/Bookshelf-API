@@ -112,3 +112,30 @@ DAFTAR LINK API YANG BAKAL DIPAKAI (FIX) :
     - proses menjalankan fungsi query
     - input : peers, fungsi invoke (fcn), argumen (json)
 
+
+
+GetManggaByID :
+get informasi sebuah jalur yang sudah sampai transaksi terakhir
+args = ID --> IDTX4 (id terakhir yg diperoleh adalah id transaksi terakhir)
+peer = penangkar dll
+fcn = GetManggaByID
+
+GetUserByID :
+get informasi profile user di blockchain
+args = ID --> ID yg bersangkutan (profile yg pengen dicari)
+peer = penangkar dll
+fcn = GetUserByID
+
+GetManggaForQuery :
+daftar asset yang pernah dibuat oleh satu user
+fcn = GetManggaForQuery
+peer = penangkar dll
+args = namaPengirim, isAsset
+
+GetHistoryForAssetByID :
+semua history transaksi ?
+args = ID --> IDTX4 (id terakhir yg diperoleh adalah id transaksi terakhir)
+peer = penangkar dll
+fcn = GetManggaByID
+
+

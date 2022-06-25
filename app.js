@@ -43,7 +43,7 @@ app.post('/api/login', async (req, res) => {
   // res.json(data);
 
   if (!data) {
-    return res.status(404).json({ status: 'error', error: 'invalid username/password' });
+    return res.status(404).json({ status: 'error', error: 'invalid username' });
   }
   const id = {id: data._id,}
   if (await bcrypt.compare(password, data.password)) {
@@ -51,7 +51,10 @@ app.post('/api/login', async (req, res) => {
     const refreshToken = jwt.sign(id, process.env.REFRESH_TOKEN_SECRET)
     // refreshToken.push(refreshTokens)
 
-    return res.json({ status: 'selamat datang ' + data.userName, accessToken: accessToken, refreshToken : refreshToken });
+    return res.json({ status: 'selamat datang ' + data.userName + 'dengan role' + data.role, accessToken: accessToken, refreshToken : refreshToken });
+  }
+  else {
+    return res.status(404).json({ status: 'error', error: 'invalid password' });
   }
 
   const refreshToken = accessToken
