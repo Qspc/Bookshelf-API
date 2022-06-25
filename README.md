@@ -46,10 +46,10 @@ Pedagang|CreateTrxManggaByPedagang|NamaPengirim, NamaPenerima, HargaManggaKg, Ku
 :-----:|:-----:|:-----:|:-----:
 Penangkar|RegistrasiBenih|VarietasBenih, UmurBenih, KuantitasBenihKg|-
 Penangkar|AddKuantitasBenihByID|quantity|quantity = banyaknya benih yg ditambah
-Penangkar|CreateTrxManggaByPenangkar|NamaPengirim, NamaPenerima, HargaBenihKg, CaraPembayaran|-
+Penangkar|CreateTrxManggaByPenangkar|NamaPengirim, NamaPenerima, KuantitasBenihKg, HargaBenihKg, CaraPembayaran|-
 Petani|TanamBenih|Pupuk, TanggalTanam, LokasiLahan|-
 Petani|PanenMangga|Ukuran, Pestisida, KadarAir, Perlakuan, Produktivitas, TanggalPanen, KuantitasManggaKg|-
-Petani|CreateTrxManggaByPetani|NamaPengirim, NamaPenerima, HargaManggaTotal, CaraPembayaran|-
+Petani|CreateTrxManggaByPetani|NamaPengirim, NamaPenerima, KuantitasManggaKg, HargaManggaTotal, CaraPembayaran|-
 Pengumpul|CreateTrxManggaByPengumpul|NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TanggalMasuk, TanggalTransaksi, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran|-
 Pedagang|CreateTrxManggaByPedagang|NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, CaraPembayaran|-
 Petani, Pengumpul, Pedagang|ConfirmTrxByID|-|-
