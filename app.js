@@ -83,40 +83,67 @@ app.delete('/api/logout/', async (req, res) => {
 app.post('/api/registrasi/', async (req, res) => {
   const { userName, password: plainTextPassword, email, namaLengkap, noTelp, tglLahir, nik, role, alamat } = req.body;
 
-  if (!userName || typeof userName !== 'string') {
+  if (!userName) {
+    return res.status(400).json({ status: 'error', error: 'username is required' });
+  }
+  if (typeof userName !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid username' });
   }
-  if (!plainTextPassword || typeof plainTextPassword !== 'string') {
+  if (!plainTextPassword) {
+    return res.status(400).json({ status: 'error', error: 'password is required' });
+  }
+  if (typeof plainTextPassword !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid password' });
   }
   if (plainTextPassword.length < 5) {
     return res.status(400).json({ status: 'error', error: 'password must more than five character' });
   }
-  if (!email || typeof email !== 'string') {
+  if (!email) {
+    return res.status(400).json({ status: 'error', error: 'email is required' });
+  }
+  if (typeof email !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid email' });
   }
-  if (!namaLengkap || typeof namaLengkap !== 'string') {
+  if (!namaLengkap) {
+    return res.status(400).json({ status: 'error', error: 'nama lengkap is required' });
+  }
+  if (typeof namaLengkap !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid namaLengkap' });
   }
-  if (!noTelp || typeof noTelp !== 'string') {
+  if (!noTelp) {
+    return res.status(400).json({ status: 'error', error: 'no telepon is required' });
+  }
+  if (typeof noTelp !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid noTelp' });
   }
-   if (!tglLahir || typeof tglLahir !== 'string') {
+  if (!tglLahir) {
+    return res.status(400).json({ status: 'error', error: 'tgl lahir is required' });
+  }
+   if (typeof tglLahir !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid tglLahir' });
   }
-  if (!nik || typeof nik !== 'string') {
+  if (!nik) {
+    return res.status(400).json({ status: 'error', error: 'nik is required' });
+  }
+  if (typeof nik !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid nik' });
   }
   if (nik.length !== 16){
     return res.status(400).json({ status: 'error', error: 'nik is not found' });
   }
-  if (!role || typeof role !== 'string') {
+  if (!role) {
+    return res.status(400).json({ status: 'error', error: 'role is required' });
+  }
+  if (typeof role !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid role' });
   }
   if (role > 4 || role < 1){
     return res.status(400).json({ status: 'error', error: 'role is not found' });
   }
-  if (!alamat || typeof alamat !== 'string') {
+  if (alamat) {
+    return res.status(400).json({ status: 'error', error: 'alamat is required' });
+  }
+  if (typeof alamat !== 'string') {
     return res.status(400).json({ status: 'error', error: 'invalid alamat' });
   }
 
