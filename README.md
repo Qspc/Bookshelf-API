@@ -37,6 +37,7 @@ Pengumpul|CreateTrxManggaByPengumpul|{NamaPengirim, NamaPenerima, HargaManggaKg,
 Pedagang|CreateTrxManggaByPedagang|{NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran}, {ID TxID3}|-
 Petani, Pengumpul, Pedagang|ConfirmTrxByID|{ID TxID yg bersangkutan}|-
 Petani, Pengumpul, Pedagang|RejectTrxByID| {ID TxID yg bersangkutan} {ID transaksi sebelumnya} {kuantitas} {RejectReason}|kuantitas = kuantitas yg akan dikembalikan, RejectReason = alasan tidak diterima 
+penangkar, petani, pengumpul, pedagang|CreateUser| {NamaLengkap, Username, Password, Email, NoHP, TanggalLahir, NIK, Role, Alamat}| -
 
 ## dokumentasi Chaincode Pada Channel 2 (Penangkar - Petani - Pengumpul - Pedagang Kecil - Konsumen)
 
@@ -56,3 +57,4 @@ Pengumpul|CreateTrxManggaByPengumpul|{NamaPengirim, NamaPenerima, HargaManggaKg,
 Pedagang|CreateTrxManggaByPedagang|{NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, CaraPembayaran}, {ID TxID3}|-
 Petani, Pengumpul, Pedagang|ConfirmTrxByID|{ID TxID yg bersangkutan}|-
 Petani, Pengumpul, Pedagang|RejectTrxByID| {ID TxID yg bersangkutan} {ID transaksi sebelumnya} {kuantitas} {RejectReason}|kuantitas = kuantitas yg akan dikembalikan, RejectReason = alasan tidak diterima 
+penangkar, petani, pengumpul, pedagang|CreateUser| {NamaLengkap, Username, Password, Email, NoHP, TanggalLahir, NIK, Role, Alamat}| -

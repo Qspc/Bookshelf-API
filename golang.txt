@@ -73,3 +73,7 @@ func main() {
 
 
 JSON
+- data json/array harus di convert kedalam arraybytes terlebih dahulu baru bisa dimasukan kedalam struct lainnnya
+- setelah di ubah kedalam arraybytes nanti lakukan proses unmarshal untuk masukan kedalam struct yg dituju
+- setelah input masuk hasil akhir yg akan di return dikembalikan kembali kedalam objek dengan menggunakan marshal
+- jangan lupa ubah kembali kedalam string agar return tidak dalam bentuk arraybytes
