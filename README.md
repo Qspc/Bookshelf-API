@@ -15,8 +15,8 @@
 
 **Variabel Chaincode**|**Atribut**
 :-----:|:-----:
-User|ID, NoHP, Email, NamaLengkap, Username, Password, TanggalLahir, NIK, Role, Alamat
-Mangga|ID, BenihID, ManggaID, NamaPengirim, NamaPenerima, KuantitasBenihKg, HargaBenihKg, HargaBenihTotal, KuantitasManggaKg, HargaManggaKg, HargaManggaTotal, TanggalTransaksi, VarietasBenih, UmurBenih, Pupuk, TanggalTanam, LokasiLahan, Ukuran, Pestisida, KadarAir, Perlakuan, Produktivitas, TanggalPanen, TanggalMasuk, TeknikSorting, MetodePengemasan, Pengangkutan, Pembeli, CaraPembayaran, TxID1, TxID2, TxID3, TxID4, IsAsset, IsConfirmed, IsEmpty, IsRejected, RejectReason
+User|ID, noTelp, email, namaLengkap, userName, password, tglLahir, nik, role, alamat
+Mangga|id, benihID, manggaID, namaPengirim, namaPenerima, kuantitasBenihKg, hargaBenihPerKg, hargaBenihTotal, kuantitasManggaKg, hargaManggaPerKg, hargaManggaTotal, tanggalTransaksi, varietasBenih, umurBenih, pupuk, tanggalTanam, lokasiLahan, ukuran, pestisida, kadarAir, perlakuan, produktivitas, tanggalPanen, tanggalMasuk, teknikSorting, metodePengemasan, pengangkutan, pembeli, caraPembayaran, txID1, txID2, txID3, txID4, isAsset, isConfirmed, isEmpty, isRejected, rejectReason
 
 
 ## dokumentasi Chaincode Pada Channel 1 (Penangkar - Petani - Pengumpul - Pedagang Besar - Konsumen)
@@ -27,16 +27,16 @@ Mangga|ID, BenihID, ManggaID, NamaPengirim, NamaPenerima, KuantitasBenihKg, Harg
 
 **Aktor**|**Aktivitas (fcn)**|**Atribut (input From FE)**|**Keterangan**
 :-----:|:-----:|:-----:|:-----:
-Penangkar|RegistrasiBenih|{VarietasBenih, UmurBenih, KuantitasBenihKg}|-
-Penangkar|AddKuantitasBenihByID|{quantity} {BenihID})|quantity = banyaknya benih yg ditambah, BenihID = benih yg di update
-Penangkar|CreateTrxManggaByPenangkar|{NamaPengirim, NamaPenerima, KuantitasBenihKg, HargaBenihKg, CaraPembayaran}, {BenihID}|-
-Petani|TanamBenih|{Pupuk, LokasiLahan} {ID TxID1} |TanggalTanam dibuat di BE
-Petani|PanenMangga|{Ukuran, Pestisida, KadarAir, Perlakuan, Produktivitas, KuantitasManggaKg} {ManggaID}|TanggalPanen dibuat di BE
-Petani|{CreateTrxManggaByPetani|NamaPengirim, NamaPenerima, KuantitasManggaKg, HargaManggaKg, CaraPembayaran} {ManggaID}|-
-Pengumpul|CreateTrxManggaByPengumpul|{NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TanggalMasuk, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran} {ID TxID2} |-
-Pedagang|CreateTrxManggaByPedagang|{NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran}, {ID TxID3}|-
+Penangkar|RegistrasiBenih|{varietasBenih, umurBenih, kuantitasBenihKg}|-
+Penangkar|AddKuantitasBenihByID|{quantity} {benihID})|quantity = banyaknya benih yg ditambah, benihID = benih yg di update
+Penangkar|CreateTrxManggaByPenangkar|{namaPengirim, namaPenerima, kuantitasBenihKg, hargaBenihPerKg, caraPembayaran}, {benihID}|-
+Petani|TanamBenih|{pupuk, lokasiLahan} {ID txID1} |tanggalTanam dibuat di BE
+Petani|PanenMangga|{ukuran, pestisida, kadarAir, perlakuan, produktivitas, kuantitasManggaKg} {manggaID}|tanggalPanen dibuat di BE
+Petani|{CreateTrxManggaByPetani|namaPengirim, namaPenerima, kuantitasManggaKg, hargaManggaPerKg, caraPembayaran} {manggaID}|-
+Pengumpul|CreateTrxManggaByPengumpul|{namaPengirim, namaPenerima, hargaManggaPerKg, kuantitasManggaKg, tanggalMasuk, teknikSorting, metodePengemasan, pengangkutan, caraPembayaran} {ID txID2} |-
+Pedagang|CreateTrxManggaByPedagang|{namaPengirim, namaPenerima, hargaManggaPerKg, kuantitasManggaKg, teknikSorting, metodePengemasan, pengangkutan, caraPembayaran}, {ID txID3}|-
 Petani, Pengumpul, Pedagang|ConfirmTrxByID|{ID TxID yg bersangkutan}|-
-Petani, Pengumpul, Pedagang|RejectTrxByID| {ID TxID yg bersangkutan} {ID transaksi sebelumnya} {kuantitas} {RejectReason}|kuantitas = kuantitas yg akan dikembalikan, RejectReason = alasan tidak diterima 
+Petani, Pengumpul, Pedagang|RejectTrxByID| {ID TxID yg bersangkutan} {ID transaksi sebelumnya} {kuantitas} {rejectReason}|kuantitas = kuantitas yg akan dikembalikan, rejectReason = alasan tidak diterima 
 penangkar, petani, pengumpul, pedagang|CreateUser| {NamaLengkap, Username, Password, Email, NoHP, TanggalLahir, NIK, Role, Alamat}| -
 
 ## dokumentasi Chaincode Pada Channel 2 (Penangkar - Petani - Pengumpul - Pedagang Kecil - Konsumen)
@@ -47,14 +47,14 @@ penangkar, petani, pengumpul, pedagang|CreateUser| {NamaLengkap, Username, Passw
 
 **Aktor**|**Aktivitas (fcn)**|**Atribut (input From FE)**|**Keterangan**
 :-----:|:-----:|:-----:|:-----:
-Penangkar|RegistrasiBenih|{VarietasBenih, UmurBenih, KuantitasBenihKg}|-
-Penangkar|AddKuantitasBenihByID|{quantity} {BenihID})|quantity = banyaknya benih yg ditambah, BenihID = benih yg di update
-Penangkar|CreateTrxManggaByPenangkar|{NamaPengirim, NamaPenerima, KuantitasBenihKg, HargaBenihKg, CaraPembayaran}, {BenihID}|-
-Petani|TanamBenih|{Pupuk, LokasiLahan} {ID TxID1} |TanggalTanam dibuat di BE
-Petani|PanenMangga|{Ukuran, Pestisida, KadarAir, Perlakuan, Produktivitas, KuantitasManggaKg} {ManggaID}|TanggalPanen dibuat di BE
-Petani|{CreateTrxManggaByPetani|NamaPengirim, NamaPenerima, KuantitasManggaKg, HargaManggaKg, CaraPembayaran} {ManggaID}|-
-Pengumpul|CreateTrxManggaByPengumpul|{NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, TanggalMasuk, TeknikSorting, MetodePengemasan, Pengangkutan, CaraPembayaran} {ID TxID2} |-
-Pedagang|CreateTrxManggaByPedagang|{NamaPengirim, NamaPenerima, HargaManggaKg, KuantitasManggaKg, CaraPembayaran}, {ID TxID3}|-
+Penangkar|RegistrasiBenih|{varietasBenih, umurBenih, kuantitasBenihKg}|-
+Penangkar|AddKuantitasBenihByID|{quantity} {benihID})|quantity = banyaknya benih yg ditambah, benihID = benih yg di update
+Penangkar|CreateTrxManggaByPenangkar|{namaPengirim, namaPenerima, kuantitasBenihKg, hargaBenihPerKg, caraPembayaran}, {benihID}|-
+Petani|TanamBenih|{pupuk, lokasiLahan} {ID txID1} |tanggalTanam dibuat di BE
+Petani|PanenMangga|{ukuran, pestisida, kadarAir, perlakuan, produktivitas, kuantitasManggaKg} {manggaID}|tanggalPanen dibuat di BE
+Petani|{CreateTrxManggaByPetani|namaPengirim, namaPenerima, kuantitasManggaKg, hargaManggaPerKg, caraPembayaran} {manggaID}|-
+Pengumpul|CreateTrxManggaByPengumpul|{namaPengirim, namaPenerima, hargaManggaPerKg, kuantitasManggaKg, tanggalMasuk, teknikSorting, metodePengemasan, pengangkutan, caraPembayaran} {ID txID2} |-
+Pedagang|CreateTrxManggaByPedagang|{namaPengirim, namaPenerima, hargaManggaPerKg, kuantitasManggaKg, caraPembayaran}, {ID txID3}|-
 Petani, Pengumpul, Pedagang|ConfirmTrxByID|{ID TxID yg bersangkutan}|-
-Petani, Pengumpul, Pedagang|RejectTrxByID| {ID TxID yg bersangkutan} {ID transaksi sebelumnya} {kuantitas} {RejectReason}|kuantitas = kuantitas yg akan dikembalikan, RejectReason = alasan tidak diterima 
+Petani, Pengumpul, Pedagang|RejectTrxByID| {ID TxID yg bersangkutan} {ID transaksi sebelumnya} {kuantitas} {rejectReason}|kuantitas = kuantitas yg akan dikembalikan, rejectReason = alasan tidak diterima 
 penangkar, petani, pengumpul, pedagang|CreateUser| {NamaLengkap, Username, Password, Email, NoHP, TanggalLahir, NIK, Role, Alamat}| -
