@@ -30,7 +30,7 @@ Mangga|id, benihID, manggaID, namaPengirim, namaPenerima, kuantitasBenihKg, harg
 Penangkar|RegistrasiBenih|{varietasBenih, umurBenih, kuantitasBenihKg}|-
 Penangkar|AddKuantitasBenihByID|{quantity} {benihID})|quantity = banyaknya benih yg ditambah, benihID = benih yg di update
 Penangkar|CreateTrxManggaByPenangkar|{namaPengirim, namaPenerima, kuantitasBenihKg, hargaBenihPerKg, caraPembayaran}, {benihID}|-
-Petani|TanamBenih|{pupuk, lokasiLahan} {ID txID1} |tanggalTanam dibuat di BE
+Petani|TanamBenih|{pupuk, lokasiLahan, kuantitasBenihKg} {ID txID1} |tanggalTanam dibuat di BE
 Petani|PanenMangga|{ukuran, pestisida, kadarAir, perlakuan, produktivitas, kuantitasManggaKg} {manggaID}|tanggalPanen dibuat di BE
 Petani|{CreateTrxManggaByPetani|namaPengirim, namaPenerima, kuantitasManggaKg, hargaManggaPerKg, caraPembayaran} {manggaID}|-
 Pengumpul|CreateTrxManggaByPengumpul|{namaPengirim, namaPenerima, hargaManggaPerKg, kuantitasManggaKg, tanggalMasuk, teknikSorting, metodePengemasan, pengangkutan, caraPembayaran} {ID txID2} |-
@@ -50,7 +50,7 @@ penangkar, petani, pengumpul, pedagang|CreateUser| {NamaLengkap, Username, Passw
 Penangkar|RegistrasiBenih|{varietasBenih, umurBenih, kuantitasBenihKg}|-
 Penangkar|AddKuantitasBenihByID|{quantity} {benihID})|quantity = banyaknya benih yg ditambah, benihID = benih yg di update
 Penangkar|CreateTrxManggaByPenangkar|{namaPengirim, namaPenerima, kuantitasBenihKg, hargaBenihPerKg, caraPembayaran}, {benihID}|-
-Petani|TanamBenih|{pupuk, lokasiLahan} {ID txID1} |tanggalTanam dibuat di BE
+Petani|TanamBenih|{pupuk, lokasiLahan, kuantitasBenihKg} {ID txID1} |tanggalTanam dibuat di BE
 Petani|PanenMangga|{ukuran, pestisida, kadarAir, perlakuan, produktivitas, kuantitasManggaKg} {manggaID}|tanggalPanen dibuat di BE
 Petani|{CreateTrxManggaByPetani|namaPengirim, namaPenerima, kuantitasManggaKg, hargaManggaPerKg, caraPembayaran} {manggaID}|-
 Pengumpul|CreateTrxManggaByPengumpul|{namaPengirim, namaPenerima, hargaManggaPerKg, kuantitasManggaKg, tanggalMasuk, teknikSorting, metodePengemasan, pengangkutan, caraPembayaran} {ID txID2} |-
