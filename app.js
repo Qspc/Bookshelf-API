@@ -199,5 +199,5 @@ function authenticateToken(req, res, next) {
 }
 
 function generateAccessToken(id) {
-  return jwt.sign(id, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '3600s'})
+  return jwt.sign(id, process.env.ACCESS_TOKEN_SECRET)
 }
