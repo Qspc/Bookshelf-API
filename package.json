@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-basic",
+  "name": "bookshelf-api",
   "version": "1.0.0",
   "description": "**No**|**URL**|**Method**|**Parameter**|**Response**|**Keterangan**\r :-----:|:-----:|:-----:|:-----:|:-----:|:-----:\r 1|https://mango-bm.herokuapp.com/api/registrasi|POST|userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat|message| - \r 2|https://mango-bm.herokuapp.com/api/login|POST|userName, password|message, acces_token, refresh_token|ambil access token untuk disimpan pada header page lain\r 3|https://mango-bm.herokuapp.com/api/all|GET| - |list user (userName, namaLengkap, email, role, alamat)| - \r 4|https://mango-bm.herokuapp.com/api/[_id]|GET| _id |_id, userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat, createdAt, UpdateAt| - \r 5|https://mango-bm.herokuapp.com/api/profile/[userName]|GET| userName |_id, userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat, createdAt, UpdateAt| - \r 6|https://mango-bm.herokuapp.com/api/[_id]|PUT| userName, password, email, namaLengkap, noTelp, tglLahir, nik, role, alamat, jalur | message | - \r 7|https://mango-bm.herokuapp.com/api/logout|DELETE| - | message | -",
   "main": "index.js",
