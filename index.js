@@ -24,18 +24,18 @@ function normalizePort(port) {
 }
 
 try {
-  const port = normalizePort(9000);
+  const port = normalizePort(process.env.PORT);
   app.listen(port, () => console.log(`Application running on port ${port}`));
 } catch (error) {
   console.error('Unable to connect to the database:', error);
 }
 
 mongoose
-  .connect('mongodb://127.0.0.1:27017/bookshelf')
+  .connect(process.env.DB_URI)
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen(process.env.PORT_MONGODB, () => {
       console.log('Connected to database');
-      console.log('Server is running on port ' + process.env.PORT);
+      console.log('Server is running on port ' + process.env.PORT_MONGODB);
     });
   })
   .catch((error) => console.log(error));
