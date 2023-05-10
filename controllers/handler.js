@@ -6,8 +6,8 @@ const addNoteHandler = async (req, res) => {
   const { name, year, author, summary, publisher, pageCount, readPage, reading } = req.payload;
   let finished = false;
   const id = nanoid(16);
-  const createdAt = new Date().toISOString();
-  const updatedAt = createdAt;
+  const insertedAt = new Date().toISOString();
+  const updatedAt = insertedAt;
 
   {
     /* eslint-disable max-len */
@@ -36,7 +36,7 @@ const addNoteHandler = async (req, res) => {
 
   const data = {
     id,
-    createdAt,
+    insertedAt,
     updatedAt,
     name,
     year,
